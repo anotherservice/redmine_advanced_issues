@@ -23,6 +23,11 @@ module RedmineAdvancedIssues
         returning available_columns_without_spent_hours do |columns|
           if (project and User.current.allowed_to?(:view_time_entries, project)) or User.current.admin?
 
+            columns << QueryColumn.new(:parent_parent,
+                :caption => :label_parent_parent,
+                :sortable => ["#{Issue.table_name}.root_id", "#{Issue.table_name}.lft ASC"]
+            ) unless columns.detect { |c| c.name == :parent_parent }
+
             columns << QueryColumn.new(:spent_hours,
                 :caption => :label_spent_hours,
                 :sortable => "(select sum(hours) from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id = #{Issue.table_name}.id)"

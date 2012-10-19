@@ -47,5 +47,6 @@ en:
   label_divergent_time: Divergent time
   label_remaining_time: Remaining time
   label_estimated_time: Estimated time
+  label_parent_parent: Feature
 
   label_warning_risk: [RISK]
