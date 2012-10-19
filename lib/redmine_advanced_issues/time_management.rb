@@ -19,37 +19,37 @@ module RedmineAdvancedIssues
 
   class TimeManagement
 
-	##
-	# Return the coef to apply to get the good value
-	##
-	def TimeManagement.getCoef(unit_time)
-	  
-	  coef = 1.0;
-	  
-	  return coef.to_f if unit_time.nil? || unit_time == 'hours'
-	  
-	  coef = coef / Setting.plugin_redmine_advanced_issues['hours_in_day'].to_f
-	  return coef.to_f if unit_time == 'days'
-	  
-	  coef = coef / Setting.plugin_redmine_advanced_issues['days_in_week'].to_f
-	  return coef.to_f if unit_time == 'weeks'
-	  
-	  coef = coef / Setting.plugin_redmine_advanced_issues['weeks_in_month'].to_f
-	  return coef.to_f if unit_time == 'months'
-	  
-	  coef = coef / Setting.plugin_redmine_advanced_issues['months_in_year'].to_f
-	  return coef.to_f if unit_time == 'years'
-	  
-	  return coef.to_f
-	  
-	end #getCoef
-  
-	##
-	# Calculate the good value for the specified time unit
-	##
+    ##
+    # Return the coef to apply to get the good value
+    ##
+    def TimeManagement.getCoef(unit_time)
+
+      coef = 1.0;
+
+      return coef.to_f if unit_time.nil? || unit_time == 'hours'
+
+      coef = coef / Setting.plugin_redmine_advanced_issues['hours_in_day'].to_f
+      return coef.to_f if unit_time == 'days'
+
+      coef = coef / Setting.plugin_redmine_advanced_issues['days_in_week'].to_f
+      return coef.to_f if unit_time == 'weeks'
+
+      coef = coef / Setting.plugin_redmine_advanced_issues['weeks_in_month'].to_f
+      return coef.to_f if unit_time == 'months'
+
+      coef = coef / Setting.plugin_redmine_advanced_issues['months_in_year'].to_f
+      return coef.to_f if unit_time == 'years'
+
+      return coef.to_f
+
+    end #getCoef
+
+    ##
+    # Calculate the good value for the specified time unit
+    ##
     def TimeManagement.calculate(value, unit_time)
-	
-	  return nil if value.nil?
+
+      return nil if value.nil?
 
       value = value.to_f
       unit_time = Setting.plugin_redmine_advanced_issues['default_unit'].to_s
@@ -75,7 +75,7 @@ module RedmineAdvancedIssues
 
     def TimeManagement.calculateHours(value, unit_time)
 
-	  return nil if value.nil?
+      return nil if value.nil?
 
       value = value.to_f
 
@@ -106,35 +106,35 @@ module RedmineAdvancedIssues
           return ''
       end #case
     end #def
-	
-	def TimeManagement.getCharFromTimeUnit(unit)
-	  case unit
-		when 'days'
-			return Setting.plugin_redmine_advanced_issues['char_for_day']
-		when 'weeks'
-			return Setting.plugin_redmine_advanced_issues['char_for_week']
-		when 'months'
-			return Setting.plugin_redmine_advanced_issues['char_for_month']
-		when 'years'
-			return Setting.plugin_redmine_advanced_issues['char_for_year']
-	  end #case
-	  return '';
-	end #def
 
-	def TimeManagement.getDefaultTimeUnit(unit)
-		case unit
-		when 'days'
-		  return I18n.t(:days)
-		when 'weeks'
-		  return I18n.t(:weeks)
-		when 'months'
-		  return I18n.t(:months)
-		when 'years'
-		  return I18n.t(:years)
-		end
-		return I18n.t(:hours)
-	end #def 
-	
+    def TimeManagement.getCharFromTimeUnit(unit)
+      case unit
+        when 'days'
+            return Setting.plugin_redmine_advanced_issues['char_for_day']
+        when 'weeks'
+            return Setting.plugin_redmine_advanced_issues['char_for_week']
+        when 'months'
+            return Setting.plugin_redmine_advanced_issues['char_for_month']
+        when 'years'
+            return Setting.plugin_redmine_advanced_issues['char_for_year']
+      end #case
+      return '';
+    end #def
+
+    def TimeManagement.getDefaultTimeUnit(unit)
+        case unit
+        when 'days'
+          return I18n.t(:days)
+        when 'weeks'
+          return I18n.t(:weeks)
+        when 'months'
+          return I18n.t(:months)
+        when 'years'
+          return I18n.t(:years)
+        end
+        return I18n.t(:hours)
+    end #def
+
   end #class
 
 end #module
