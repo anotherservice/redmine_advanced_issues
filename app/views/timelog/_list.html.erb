@@ -16,7 +16,7 @@
 <%= sort_header_tag('project', :caption => l(:label_project)) %>
 <%= sort_header_tag('issue', :caption => l(:label_issue), :default_order => 'desc') %>
 <th><%= l(:field_comments) %></th>
-<%= sort_header_tag('hours', :caption => l(:field_hours)) %>
+<%= sort_header_tag('hours', :caption => default_unit_time.capitalize ) %>
 <th></th>
 </tr>
 </thead>
@@ -34,7 +34,7 @@
 <% end -%>
 </td>
 <td class="comments"><%=h entry.comments %></td>
-<td class="hours"><%= html_hours("%.2f" % entry.hours) %></td>
+<td class="hours"><%= "%.2f" % entry.time %></td>
 <td align="center">
 <% if entry.editable_by?(User.current) -%>
     <%= link_to image_tag('edit.png'), {:controller => 'timelog', :action => 'edit', :id => entry, :project_id => nil},
