@@ -1,4 +1,5 @@
 # Redmine advanced issues - Plugin improve time entry
+# Copyright (C) 2011  Tieu-Philippe Khim
 # Copyright (C) 2012  Yann Autissier
 #
 # This program is free software; you can redistribute it and/or

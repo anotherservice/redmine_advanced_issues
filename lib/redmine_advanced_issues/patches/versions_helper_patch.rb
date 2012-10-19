@@ -20,7 +20,7 @@ require 'redmine_advanced_issues/time_management'
 
 module RedmineAdvancedIssues
   module Patches
-    module ProjectsHelperPatch
+    module VersionsHelperPatch
 
       def time(hours)
         return RedmineAdvancedIssues::TimeManagement.calculate hours, Setting.plugin_redmine_advanced_issues['default_unit']
@@ -30,7 +30,7 @@ module RedmineAdvancedIssues
         return RedmineAdvancedIssues::TimeManagement.getDefaultTimeUnit(Setting.plugin_redmine_advanced_issues['default_unit'])
       end #default_unit_time
 
-    end #ProjectsHelperPatch
+    end #VersionsHelperPatch
   end #Patches
 end #RedmineAdvancedIssues
 
