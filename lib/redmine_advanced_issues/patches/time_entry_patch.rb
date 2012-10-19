@@ -22,6 +22,12 @@ require 'redmine_advanced_issues/time_management'
 module RedmineAdvancedIssues
   module Patches
     module TimeEntryPatch
+
+      #TODO: refactoring
+      def self.default_unit_time
+        return RedmineAdvancedIssues::TimeManagement.getDefaultTimeUnit(Setting.plugin_redmine_advanced_issues['default_unit'])
+      end #default_unit_time
+
       def self.included(base) # :nodoc:
 
         base.extend(ClassMethods)
@@ -45,7 +51,7 @@ module RedmineAdvancedIssues
 
         #TODO: refactoring
         def default_unit_time
-		  return RedmineAdvancedIssues::TimeManagement.getDefaultTimeUnit(Setting.plugin_redmine_advanced_issues['default_unit'])
+          return RedmineAdvancedIssues::TimeManagement.getDefaultTimeUnit(Setting.plugin_redmine_advanced_issues['default_unit'])
         end #default_unit_time
       end #InstanceMethods
     end #TimeEntryPatch

@@ -18,18 +18,22 @@
 require 'redmine'
 require 'dispatcher'
 
-RAILS_DEFAULT_LOGGER.info 'Starting advenced Issues Plugin for RedMine'
+RAILS_DEFAULT_LOGGER.info 'Starting advanced Issues Plugin for RedMine'
 
 Dispatcher.to_prepare do
 
   # add time unit conversion
-  Issue.send(:include, RedmineAdvancedIssues::Patches::IssuePatch) unless Issue.included_modules.include? RedmineAdvancedIssues::Patches::IssuePatch  
+  Issue.send(:include, RedmineAdvancedIssues::Patches::IssuePatch) unless Issue.included_modules.include? RedmineAdvancedIssues::Patches::IssuePatch
   TimeEntry.send(:include, RedmineAdvancedIssues::Patches::TimeEntryPatch) unless TimeEntry.included_modules.include? RedmineAdvancedIssues::Patches::TimeEntryPatch
+  ProjectsHelper.send(:include, RedmineAdvancedIssues::Patches::ProjectsHelperPatch) unless ProjectsHelper.include?(RedmineAdvancedIssues::Patches::ProjectsHelperPatch)
+  VersionsHelper.send(:include, RedmineAdvancedIssues::Patches::VersionsHelperPatch) unless VersionsHelper.include?(RedmineAdvancedIssues::Patches::VersionsHelperPatch)
+  MyHelper.send(:include, RedmineAdvancedIssues::Patches::MyHelperPatch) unless MyHelper.include?(RedmineAdvancedIssues::Patches::MyHelperPatch)
 
   # add spent time column
   Query.send(:include, RedmineAdvancedIssues::Patches::QueryPatch) unless Query.include?(RedmineAdvancedIssues::Patches::QueryPatch)
   QueriesHelper.send(:include, RedmineAdvancedIssues::Patches::QueriesHelperPatch) unless QueriesHelper.include?(RedmineAdvancedIssues::Patches::QueriesHelperPatch)
-  
+  TimelogHelper.send(:include, RedmineAdvancedIssues::Patches::TimelogHelperPatch) unless TimelogHelper.include?(RedmineAdvancedIssues::Patches::TimelogHelperPatch)
+
 end
 
 Redmine::Plugin.register :redmine_advanced_issues do

@@ -1,5 +1,6 @@
 # Redmine advanced issues - Plugin improve time entry
 # Copyright (C) 2011  Tieu-Philippe Khim
+# Copyright (C) 2012  Yann Autissier
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,22 +20,17 @@ require 'redmine_advanced_issues/time_management'
 
 module RedmineAdvancedIssues
   module Patches
-    module QueriesHelperPatch
+    module MyHelperPatch
 
-      def column_content_with_spent_hours(column, issue)
-        value = column.value(issue)
+      def time(hours)
+        return RedmineAdvancedIssues::TimeManagement.calculate hours, Setting.plugin_redmine_advanced_issues['default_unit']
+      end #time(hours)
 
-        if %w(Fixnum Float).include?( value.class.name ) and [:spent_hours, :calculated_spent_hours, :divergent_hours, :remaining_hours].include?(column.name)
-            sprintf "%.2f", value
-        else #if
-          column_content_without_spent_hours(column, issue)
-        end #if
-      end #def
+      def default_unit_time
+        return RedmineAdvancedIssues::TimeManagement.getDefaultTimeUnit(Setting.plugin_redmine_advanced_issues['default_unit'])
+      end #default_unit_time
 
-      def self.included(base)
-        base.send :alias_method_chain, :column_content, :spent_hours
-      end
+    end #MyHelperPatch
+  end #Patches
+end #RedmineAdvancedIssues
 
-    end
-  end
-end
