@@ -26,6 +26,7 @@ Dispatcher.to_prepare do
   Issue.send(:include, RedmineAdvancedIssues::Patches::IssuePatch) unless Issue.included_modules.include? RedmineAdvancedIssues::Patches::IssuePatch
   TimeEntry.send(:include, RedmineAdvancedIssues::Patches::TimeEntryPatch) unless TimeEntry.included_modules.include? RedmineAdvancedIssues::Patches::TimeEntryPatch
   ProjectsHelper.send(:include, RedmineAdvancedIssues::Patches::ProjectsHelperPatch) unless ProjectsHelper.include?(RedmineAdvancedIssues::Patches::ProjectsHelperPatch)
+  MyHelper.send(:include, RedmineAdvancedIssues::Patches::MyHelperPatch) unless MyHelper.include?(RedmineAdvancedIssues::Patches::MyHelperPatch)
 
   # add spent time column
   Query.send(:include, RedmineAdvancedIssues::Patches::QueryPatch) unless Query.include?(RedmineAdvancedIssues::Patches::QueryPatch)
