@@ -27,9 +27,10 @@ en:
   years: "years"
   year: "year"
 
-  field_estimated_time: "Hours by default"
+  field_estimated_time: "Estimated time"
   field_estimated_default: "%{unit} by default"
   field_time_entry_hours: "Time spent"
+  field_remaining_time: "Remaining time"
 
   label_settings_unit_default: "Default time unit"
   label_estimated: "%{value} %{unit}"
@@ -38,6 +39,8 @@ en:
   label_divergent_hours: Divergent hours
   label_remaining_hours: Remaining hours
   label_spent_hours: Spent hours
+  label_total_spent_hours: Total spent hours
+  label_total_spent_time: Total spent time
 
   label_calculated_spent_time: Calculated spent time
   label_divergent_time: Divergent time

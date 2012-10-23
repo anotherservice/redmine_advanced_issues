@@ -52,7 +52,7 @@
 <% end %>
 
 <% if @issue.safe_attribute? 'estimated_hours' %>
-<p><%= f.text_field :estimated_hours, :size => 3, :disabled => !@issue.leaf? %> <%= default_unit_time.capitalize %></p>
+<p><%= f.text_field :estimated_time, :size => 3, :disabled => !@issue.leaf? %> <%= default_unit_time.capitalize %></p>
 <% end %>
 
 <% if @issue.safe_attribute?('done_ratio') && @issue.leaf? && Issue.use_field_for_done_ratio? %>
