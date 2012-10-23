@@ -27,9 +27,10 @@ fr:
   years: "années"
   year: "année"
 
-  field_estimated_time: "Heures par defaut"
+  field_estimated_time: "Temps estimé"
   field_estimated_default: "%{unit} par défaut"
   field_time_entry_hours: "Temps passé"
+  field_remaining_time: "Temps restant"
 
   label_settings_unit_default: "Unité de temps par défaut"
   label_estimated: "%{value} %{unit}"
@@ -38,6 +39,9 @@ fr:
   label_divergent_hours: Heures dépassées
   label_remaining_hours: Heures restantes
   label_spent_hours: Heures passées
+  label_spent_time: Temps passé
+  label_total_spent_hours: Total heures passées
+  label_total_spent_time: Total temps passé
 
   label_calculated_spent_time: Temps passés calculés
   label_divergent_time: Temps dépassé

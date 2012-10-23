@@ -33,6 +33,16 @@ module RedmineAdvancedIssues
                 :sortable => "(select sum(hours) / #{TimeManagement.getCoef(Setting.plugin_redmine_advanced_issues['default_unit'].to_s)} from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id = #{Issue.table_name}.id)"
             ) unless columns.detect { |c| c.name == :spent_time }
 
+            columns << QueryColumn.new(:total_spent_hours,
+                :caption => :label_total_spent_hours,
+                :sortable => ""
+            ) unless columns.detect { |c| c.name == :total_spent_hours }
+
+            columns << QueryColumn.new(:total_spent_time,
+                :caption => :label_total_spent_time,
+                :sortable => ""
+            ) unless columns.detect { |c| c.name == :total_spent_time }
+
             columns << QueryColumn.new(:estimated_hours,
                 :caption => :label_estimated_hours,
                 :sortable => "IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours"

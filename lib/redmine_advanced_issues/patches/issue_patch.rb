@@ -90,6 +90,14 @@ module RedmineAdvancedIssues
           #return sprintf "%.2f %c", time.to_f, default_unit_time
         end #def
 
+        def total_spent_time
+          hours = total_spent_hours
+          return nil if hours.nil?
+          time = RedmineAdvancedIssues::TimeManagement.calculate hours, Setting.plugin_redmine_advanced_issues['default_unit']
+          return time.to_f
+          #return sprintf "%.2f %c", time.to_f, default_unit_time
+        end #def
+
           def calculated_spent_hours
             return self_and_descendants.sum("estimated_hours * done_ratio / 100").to_f || 0.0
           end #calculated_spent_hours
