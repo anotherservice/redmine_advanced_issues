@@ -35,12 +35,12 @@ module RedmineAdvancedIssues
 
             columns << QueryColumn.new(:total_spent_hours,
                 :caption => :label_total_spent_hours,
-                :sortable => ""
+                :sortable => "(select sum(hours) from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id BETWEEN #{Issue.table_name}.lft AND #{Issue.table_name}.rgt)"
             ) unless columns.detect { |c| c.name == :total_spent_hours }
 
             columns << QueryColumn.new(:total_spent_time,
                 :caption => :label_total_spent_time,
-                :sortable => ""
+                :sortable => "(select sum(hours) / #{TimeManagement.getCoef(Setting.plugin_redmine_advanced_issues['default_unit'].to_s)} from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id BETWEEN #{Issue.table_name}.lft AND #{Issue.table_name}.rgt)"
             ) unless columns.detect { |c| c.name == :total_spent_time }
 
             columns << QueryColumn.new(:estimated_hours,
