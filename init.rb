@@ -43,14 +43,16 @@ Redmine::Plugin.register :redmine_advanced_issues do
 This is a plugin for Redmine, that add some advanced stuffs.
 Spent time columns, unit time customize
 '
-  version '0.0.4'
-  url 'http://blog.spikie.info/'
+  version '0.0.5'
+  url 'https://github.com/spike008t/redmine_advanced_issues'
   author_url 'http://blog.spikie.info'
 
   # Minimum version of Redmine.
   requires_redmine :version_or_higher => '0.9.0'
 
   settings(:default => {
+             'char_for_hour' => 'h',
+
              'hours_in_day' => '7.4',
              'char_for_day' => 'd',
 

@@ -94,6 +94,8 @@ module RedmineAdvancedIssues
 
     def TimeManagement.getUnitTimeFromChar(char)
       case char
+        when Setting.plugin_redmine_advanced_issues['char_for_hour']
+          return 'hours'
         when Setting.plugin_redmine_advanced_issues['char_for_day']
           return 'days'
         when Setting.plugin_redmine_advanced_issues['char_for_week']
@@ -109,6 +111,8 @@ module RedmineAdvancedIssues
 
     def TimeManagement.getCharFromTimeUnit(unit)
       case unit
+        when 'hours'
+            return Setting.plugin_redmine_advanced_issues['char_for_hour']
         when 'days'
             return Setting.plugin_redmine_advanced_issues['char_for_day']
         when 'weeks'

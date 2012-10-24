@@ -5,6 +5,7 @@ en:
   field_weeks_in_month: "Number of weeks in a month"
   field_months_in_year: "Number of month in an year"
 
+  field_char_for_hour: "Char for an hour"
   field_char_for_day: "Char for a day"
   field_char_for_week: "Char for a week"
   field_char_for_month: "Char for a month"
