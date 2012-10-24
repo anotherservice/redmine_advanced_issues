@@ -30,37 +30,37 @@ module RedmineAdvancedIssues
 
             columns << QueryColumn.new(:spent_time,
                 :caption => :label_spent_time,
-                :sortable => "(select sum(hours) / #{TimeManagement.getCoef(Setting.plugin_redmine_advanced_issues['default_unit'].to_s)} from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id = #{Issue.table_name}.id)"
+                :sortable => "(select sum(hours) from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id = #{Issue.table_name}.id)"
             ) unless columns.detect { |c| c.name == :spent_time }
 
             columns << QueryColumn.new(:total_spent_hours,
                 :caption => :label_total_spent_hours,
-                :sortable => ""
+                :sortable => "(select sum(hours) from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id BETWEEN #{Issue.table_name}.lft AND #{Issue.table_name}.rgt)"
             ) unless columns.detect { |c| c.name == :total_spent_hours }
 
             columns << QueryColumn.new(:total_spent_time,
                 :caption => :label_total_spent_time,
-                :sortable => ""
+                :sortable => "(select sum(hours) from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id BETWEEN #{Issue.table_name}.lft AND #{Issue.table_name}.rgt)"
             ) unless columns.detect { |c| c.name == :total_spent_time }
 
             columns << QueryColumn.new(:estimated_hours,
                 :caption => :label_estimated_hours,
-                :sortable => "IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours"
+                :sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours))"
             ) unless columns.detect { |c| c.name == :estimated_hours }
 
             columns << QueryColumn.new(:estimated_time,
                 :caption => :label_estimated_time,
-                :sortable => "IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours / #{TimeManagement.getCoef(Setting.plugin_redmine_advanced_issues['default_unit'].to_s)}"
+                :sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours))"
             ) unless columns.detect { |c| c.name == :estimated_time }
 
             columns << QueryColumn.new(:calculated_spent_hours,
                 :caption => :label_calculated_spent_hours,
-                :sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100))"
+                :sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100)"
             ) unless columns.detect { |c| c.name == :calculated_spent_hours }
 
             columns << QueryColumn.new(:calculated_spent_time,
                 :caption => :label_calculated_spent_time,
-                :sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100)) / #{TimeManagement.getCoef(Setting.plugin_redmine_advanced_issues['default_unit'].to_s)}"
+                :sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100)"
             ) unless columns.detect { |c| c.name == :calculated_spent_time }
 
             columns << QueryColumn.new(:divergent_hours,
@@ -70,7 +70,7 @@ module RedmineAdvancedIssues
 
             columns << QueryColumn.new(:divergent_time,
                 :caption => :label_divergent_time,
-                :sortable => "((select sum(hours) / #{TimeManagement.getCoef(Setting.plugin_redmine_advanced_issues['default_unit'].to_s)} from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id = #{Issue.table_name}.id) - (IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100s))"
+                :sortable => "((select sum(hours) from #{TimeEntry.table_name} where #{TimeEntry.table_name}.issue_id = #{Issue.table_name}.id) - (IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100))"
             ) unless columns.detect { |c| c.name == :divergent_time }
 
             columns << QueryColumn.new(:remaining_hours,
@@ -80,7 +80,7 @@ module RedmineAdvancedIssues
 
             columns << QueryColumn.new(:remaining_time,
                 :caption => :label_remaining_time,
-                :sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) - (IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100)) / #{TimeManagement.getCoef(Setting.plugin_redmine_advanced_issues['default_unit'].to_s)}"
+                :sortable => "(IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) - (IF(#{Issue.table_name}.estimated_hours IS NULL,0,#{Issue.table_name}.estimated_hours) * #{Issue.table_name}.done_ratio / 100))"
             ) unless columns.detect { |c| c.name == :remaining_time }
 
           end #if
