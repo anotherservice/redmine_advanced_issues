@@ -41,6 +41,20 @@ module RedmineAdvancedIssues
 
       module InstanceMethods
 
+        def parent_feature
+          nested_set_scope.find_by_id(parent_feature_id) if parent_feature_id
+        end #parent_feature
+
+        def parent_feature_id
+          feature_issue_id = nil
+          if parent_id?
+            if parent.parent_id?
+              feature_issue_id = parent.parent_id
+            end
+          end
+          feature_issue_id
+        end #parent_feature_id
+
         # return how many hours has consume over the estimated_hours
         def spent_time_over_estimated
             if spent_time_over_estimated?
