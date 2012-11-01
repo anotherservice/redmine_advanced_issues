@@ -48,7 +48,7 @@ Spent time columns, unit time customize
   author_url 'http://blog.spikie.info'
 
   # Minimum version of Redmine.
-  requires_redmine :version_or_higher => '0.9.0'
+  requires_redmine :version_or_higher => '1.4.0'
 
   settings(:default => {
              'char_for_hour' => 'h',
