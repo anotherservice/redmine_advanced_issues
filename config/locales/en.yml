@@ -48,5 +48,6 @@ en:
   label_remaining_time: Remaining time
   label_estimated_time: Estimated time
   label_parent_feature: Feature
+  label_parent_subject: Parent subject
 
   label_warning_risk: [RISK]
