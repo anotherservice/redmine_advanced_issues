@@ -31,8 +31,17 @@ module RedmineAdvancedIssues
         end #if
       end #def
 
+      def column_value_with_parent_subject(column, issue, value)
+        if column.name == :parent_subject
+          link_to(h(value), :controller => 'issues', :action => 'show', :id => issue)
+        else
+          column_value_without_parent_subject(column, issue, value)
+        end
+      end
+
       def self.included(base)
         base.send :alias_method_chain, :column_content, :spent_hours
+        base.send :alias_method_chain, :column_value, :parent_subject
       end
 
     end

@@ -41,6 +41,10 @@ module RedmineAdvancedIssues
 
       module InstanceMethods
 
+        def parent_subject
+          nested_set_scope.find_by_id(parent_id).subject if parent_id
+        end #parent_name
+
         def parent_feature
           nested_set_scope.find_by_id(parent_feature_id) if parent_feature_id
         end #parent_feature
