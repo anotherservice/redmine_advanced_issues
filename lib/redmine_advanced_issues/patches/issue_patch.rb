@@ -43,21 +43,21 @@ module RedmineAdvancedIssues
 
         def parent_subject
           nested_set_scope.find_by_id(parent_id).subject if parent_id
-        end #parent_name
+        end #parent_subject
 
-        def parent_feature
-          nested_set_scope.find_by_id(parent_feature_id) if parent_feature_id
-        end #parent_feature
+        def grand_parent_subject
+          nested_set_scope.find_by_id(grand_parent_id) if grand_parent_id
+        end #grand_parent_subject
 
-        def parent_feature_id
-          feature_issue_id = nil
+        def grand_parent_id
+          grand_parent_issue_id = nil
           if parent_id?
             if parent.parent_id?
-              feature_issue_id = parent.parent_id
+              grand_parent_issue_id = parent.parent_id
             end
           end
-          feature_issue_id
-        end #parent_feature_id
+          grand_parent_issue_id
+        end #grand_parent_id
 
         # return how many hours has consume over the estimated_hours
         def spent_time_over_estimated
