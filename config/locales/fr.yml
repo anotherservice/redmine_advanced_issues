@@ -48,7 +48,7 @@ fr:
   label_divergent_time: Temps dépassé
   label_remaining_time: Temps restant
   label_estimated_time: Temps estimé
-  label_parent_feature: Grand parent
+  label_grand_parent: Grand parent
   label_parent_subject: Feature
 
   label_warning_risk: [RISQUE]
