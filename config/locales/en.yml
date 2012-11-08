@@ -29,6 +29,7 @@ en:
   year: "year"
 
   field_estimated_time: "Estimated time"
+  field_estimated_hours: "Estimated hours"
   field_estimated_default: "%{unit} by default"
   field_time_entry_hours: "Time spent"
   field_remaining_time: "Remaining time"
