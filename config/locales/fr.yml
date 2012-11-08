@@ -49,6 +49,7 @@ fr:
   label_divergent_time: Temps dépassé
   label_remaining_time: Temps restant
   label_estimated_time: Temps estimé
+  label_estimated_hours: Heures estimées
   label_parent_subject: Parent
   label_grand_parent_subject: Grand parent
 

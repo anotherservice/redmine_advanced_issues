@@ -48,6 +48,7 @@ en:
   label_divergent_time: Divergent time
   label_remaining_time: Remaining time
   label_estimated_time: Estimated time
+  label_estimated_hours: Estimated hours
   label_parent_subject: Parent
   label_grand_parent_subject: Grandparent
 
