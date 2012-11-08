@@ -28,10 +28,10 @@ module RedmineAdvancedIssues
                 :sortable => ["#{Issue.table_name}.parent_id", "#{Issue.table_name}.lft ASC"]
             ) unless columns.detect { |c| c.name == :parent_subject }
 
-            columns << QueryColumn.new(:parent_feature,
-                :caption => :label_parent_feature,
+            columns << QueryColumn.new(:grand_parent_subject,
+                :caption => :label_grand_parent_subject,
                 :sortable => ["#{Issue.table_name}.root_id", "#{Issue.table_name}.lft ASC"]
-            ) unless columns.detect { |c| c.name == :parent_feature }
+            ) unless columns.detect { |c| c.name == :grand_parent_subject }
 
             columns << QueryColumn.new(:spent_hours,
                 :caption => :label_spent_hours,

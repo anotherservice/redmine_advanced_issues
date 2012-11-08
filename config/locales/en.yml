@@ -48,7 +48,7 @@ en:
   label_divergent_time: Divergent time
   label_remaining_time: Remaining time
   label_estimated_time: Estimated time
-  label_parent_feature: Grandparent
-  label_parent_subject: Feature
+  label_parent_subject: Parent
+  label_grand_parent_subject: Grandparent
 
   label_warning_risk: [RISK]
