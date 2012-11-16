@@ -55,8 +55,8 @@ module Hooks
 
       end #if
 
-      if context[:time_entry] && context[:time_entry][:hours].present?
-        value = context[:time_entry][:hours]
+      if context[:params] && context[:params][:time_entry] && context[:params][:time_entry][:hours].present?
+        value = context[:params][:time_entry][:hours]
         time_unit = ""
 
         if value.to_s =~ /^([0-9]+)\s*[a-z]{1}$/
@@ -69,9 +69,9 @@ module Hooks
             context[:time_entry][:hours] = RedmineAdvancedIssues::TimeManagement.calculateHours value.to_f, time_unit
         end #if
 
-      end #if
-
       return ''
+
+      end #if
 
     end #controller_issues_edit_before_save
 
