@@ -76,6 +76,7 @@ module RedmineAdvancedIssues
     def TimeManagement.calculateHours(value, unit_time)
 
       return nil if value.nil?
+      unit_time = Setting.plugin_redmine_advanced_issues['default_unit'].to_s if unit_time.nil?
 
       value = value.to_f
 
@@ -122,7 +123,7 @@ module RedmineAdvancedIssues
         when 'years'
             return Setting.plugin_redmine_advanced_issues['char_for_year']
       end #case
-      return '';
+      return ''
     end #def
 
     def TimeManagement.getDefaultTimeUnit(unit)

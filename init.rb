@@ -53,7 +53,7 @@ Spent time columns, unit time customize
   settings(:default => {
              'char_for_hour' => 'h',
 
-             'hours_in_day' => '7.4',
+             'hours_in_day' => '8',
              'char_for_day' => 'd',
 
              'days_in_week' => '5',
@@ -65,7 +65,7 @@ Spent time columns, unit time customize
              'months_in_year' => '12',
              'char_for_year' => 'y',
 
-             'default_unit' => 'hours',
+             'default_unit' => 'days',
 
            }, :partial => 'settings/advanced_issues_settings')
 
