@@ -34,7 +34,7 @@ module Hooks
         end #if
 
         if !time_unit.empty?
-            context[:issue][:estimated_hours] = RedmineAdvancedIssues::TimeManagement.calculateHours value.to_f, time_unit
+          context[:issue][:estimated_hours] = RedmineAdvancedIssues::TimeManagement.calculateHours value.to_f, time_unit
         end #if
 
       end #if
@@ -55,23 +55,7 @@ module Hooks
 
       end #if
 
-      if context[:time_entry] && context[:time_entry][:hours].present?
-        value = context[:time_entry][:hours]
-        time_unit = ""
-
-        if value.to_s =~ /^([0-9]+)\s*[a-z]{1}$/
-          time_unit = RedmineAdvancedIssues::TimeManagement.getUnitTimeFromChar value.to_s[-1, 1]
-        else
-          time_unit = Setting.plugin_redmine_advanced_issues['default_unit']
-        end #if
-
-        if !time_unit.empty?
-            context[:time_entry][:hours] = RedmineAdvancedIssues::TimeManagement.calculateHours value.to_f, time_unit
-        end #if
-
-      end #if
-
-      return ''
+    return ''
 
     end #controller_issues_edit_before_save
 

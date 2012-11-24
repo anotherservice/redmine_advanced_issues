@@ -41,7 +41,7 @@ module Hooks
         end #if
 
         if !time_unit.empty?
-            context[:time_entry][:hours] = RedmineAdvancedIssues::TimeManagement.calculateHours value.to_f, time_unit
+          context[:time_entry][:hours] = RedmineAdvancedIssues::TimeManagement.calculateHours value.to_f, time_unit
         end #if
 
       return ''
