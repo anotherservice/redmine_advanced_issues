@@ -135,7 +135,8 @@ module RedmineAdvancedIssues
           end #divergent_time
 
           def remaining_hours
-            return self_and_descendants.sum("estimated_hours - (estimated_hours * done_ratio / 100)").to_f || 0.0
+            h = read_attribute( :remaining_hours )
+            h.nil? ? self_and_descendants.sum("estimated_hours - (estimated_hours * done_ratio / 100)").to_f || 0.0 : h
           end #remaining_hours
 
           def remaining_time
